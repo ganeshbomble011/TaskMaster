@@ -45,9 +45,6 @@ namespace TaskMaster
 
 
 
-
-      
-
             app.MapGet("/", () => Results.Redirect("/swagger"));
 
 
