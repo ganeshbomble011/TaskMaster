@@ -1,8 +1,5 @@
 ﻿using Microsoft.Data.SqlClient;
 using System.Data;
-using TaskMaster.Infrastructure.Services;
-using TaskMaster.Web.Endpoints;
-using TaskMaster.Infrastructure.Data;
 
 namespace TaskMaster
 {
@@ -32,10 +29,6 @@ namespace TaskMaster
             services.AddSingleton(connectionString);
             services.AddScoped<IDbConnection>(_ => new SqlConnection(connectionString));
             services.AddTransient<SqlConnection>(_ => new SqlConnection(connectionString));
-            services.AddScoped<UserUpdateDto>();
-            services.AddScoped<UserDataAccess>();
-            services.AddScoped<UserService>();
-
 
             var app = builder.Build();
 
@@ -49,7 +42,6 @@ namespace TaskMaster
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-            UserEndpoints.Map(app);
 
 
 
